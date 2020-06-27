@@ -312,7 +312,7 @@ spec:
         command
           - cat
           - /app/is_ready
-</code><pre>
+</code></pre>
 
 <pre><code>
 
