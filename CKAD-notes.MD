@@ -946,7 +946,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-name: my-claim
+  name: my-claim
 
 spec:
   accessModes:
