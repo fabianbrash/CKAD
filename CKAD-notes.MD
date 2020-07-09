@@ -365,7 +365,7 @@ kubectl rollout history deployment/mydeploy
 kubectl rollout undo deployment/mydeploy
 
 kubectl set image deployment/mydeploy nginx=nginx:1.9.1
-
+---
 apiVerion: v1
 kind: Deployment
 metadata:
@@ -390,6 +390,34 @@ spec:
   strategy:
     type: Recreate
     #type: Rollingupdate(this is the default)
+
+---
+apiVerion: v1
+kind: Deployment
+metadata:
+  name: my-deploy
+  labels:
+    tier: frontend
+
+spec:
+  template:
+    metadata:
+      name: my-deploy
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: frontend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 2
 </code></pre>
 
 ## Deployment strategies
