@@ -692,6 +692,29 @@ spec:
 
 </code></pre>
 
+<pre><code>
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: secure-policy
+
+spec:
+  podSelector:
+    matchlabels:
+      run: secure-pod  #match the pod that you want to allow traffic to
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          name: webapp-color #this is the pod where traffic is coming from on port 80
+    ports:
+    - protocol: TCP
+      port: 80
+</code></pre>
+
 ## Only some CNI's support Network Policy
 
 ### - Kube-router
@@ -1186,3 +1209,22 @@ kubectl logs dev-pod-dind-878516 -c log-x(note here I am specifying which contai
 </code></pre>
 
 ### Get ingress template from kubernetes.io we have to use the host option
+
+
+<pre><code>
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: task-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+</code></pre>
