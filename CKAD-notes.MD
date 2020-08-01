@@ -1211,6 +1211,8 @@ kubectl logs dev-pod-dind-878516 -c log-x(note here I am specifying which contai
 ### Get ingress template from kubernetes.io we have to use the host option
 
 
+### Create a pv with host path
+
 <pre><code>
 
 apiVersion: v1
