@@ -1230,3 +1230,8 @@ spec:
   hostPath:
     path: "/mnt/data"
 </code></pre>
+
+<pre><code>
+kubectl --namespace ckad exec ngx-pod -i -t -- bash
+</code></pre>
+### The above will exec into a pod called ngx-pod interactively and run bash
